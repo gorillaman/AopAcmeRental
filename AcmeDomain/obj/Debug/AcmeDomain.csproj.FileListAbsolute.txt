@@ -1,0 +1,5 @@
+C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeDomain\bin\Debug\AcmeDomain.dll
+C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeDomain\bin\Debug\AcmeDomain.pdb
+C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeDomain\obj\Debug\AcmeDomain.dll
+C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeDomain\obj\Debug\AcmeDomain.pdb
+C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeDomain\obj\Debug\AcmeDomain.csprojResolveAssemblyReference.cache
