@@ -2,6 +2,7 @@
 using System.Linq;
 using AcmeDomain.Entities;
 using System.Transactions;
+using AcmeDomain.Aspects;
 
 namespace AcmeDomain
 {
@@ -14,27 +15,33 @@ namespace AcmeDomain
             _loyaltyDataService = service;
         }
 
+        
+        [LoggingAspect]
+        [DefensiveProgramming]
+        [TransactionManagement]
+        [ExceptionAspect]
         public void Accrue(RentalAgreement agreement)
         {   
             //defensive programming
-            if (agreement == null) throw new ArgumentNullException("agreement");
+            //if (agreement == null) throw new ArgumentNullException("agreement");
 
             //logging
-            Console.WriteLine("Accrue: {0}", DateTime.Now);
-            Console.WriteLine("Customer: {0}", agreement.Customer.Id);
-            Console.WriteLine("Customer: {0}", agreement.Vehicle.Id);
+            //Console.WriteLine("Accrue: {0}", DateTime.Now);
 
-            try
-            {            
-                using (var scope = new TransactionScope())
-                {
-                    var retries = 3;
-                    var succeeded = false;
+            //Console.WriteLine("Customer: {0}", agreement.Customer.Id);
+            //Console.WriteLine("Customer: {0}", agreement.Vehicle.Id);
 
-                    while (!succeeded)
-                    {
-                        try
-                        {
+            //try
+            //{            
+                //using (var scope = new TransactionScope())
+                //{
+                //    var retries = 3;
+                //    var succeeded = false;
+
+                //    while (!succeeded)
+                //    {
+                //        try
+                //        {
                             var rentalTimeSpan = (agreement.EndDate.Subtract(agreement.StartDate));
                             var numberOfDays = (int)Math.Floor(rentalTimeSpan.TotalDays);
                             var pointsPerDay = 1;
@@ -43,33 +50,28 @@ namespace AcmeDomain
                             var points = numberOfDays * pointsPerDay;
                             _loyaltyDataService.AddPoints(agreement.Customer.Id, points);
 
-                            scope.Complete();
+                            //scope.Complete();
 
-                            succeeded = true;
+                            //succeeded = true;
+
                             //logging
-                            Console.WriteLine("Accrue complete: {0}", DateTime.Now);
-                        }
-                        catch
-                        {
-                            if (retries >= 0)
-                                retries--;
-                            else
-                                throw;
-                        }
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                if (!Exceptions.Handle(ex))
-                    throw;
+                            //Console.WriteLine("Accrue complete: {0}", DateTime.Now);
+                        //}
+                        //catch
+                        //{
+                        //    if (retries >= 0)
+                        //        retries--;
+                        //    else
+                        //        throw;
+                        //}
+            //}                            
+            //catch (Exception ex)
+            //{
+            //    if (!Exceptions.Handle(ex))
+            //        throw;
                 
-            }
-           
+            //}           
         }
-
-
     }
      
 

@@ -5,3 +5,5 @@ C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeCarRe
 C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeCarRental\obj\x86\Debug\AcmeCarRental.csprojResolveAssemblyReference.cache
 C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeCarRental\bin\Debug\AcmeDomain.dll
 C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeCarRental\bin\Debug\AcmeDomain.pdb
+C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeCarRental\bin\Debug\PostSharp.dll
+C:\Users\Danny\Documents\Visual Studio 2010\Projects\AOP\AcmeCarRental\AcmeCarRental\bin\Debug\PostSharp.xml

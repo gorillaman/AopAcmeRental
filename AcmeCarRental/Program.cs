@@ -2,6 +2,7 @@
 using System.Linq;
 using AcmeDomain;
 using AcmeDomain.Entities;
+using without =  AcmeDomain.WithoutAOP227;
 
 namespace AcmeCarRental
 {
@@ -26,7 +27,21 @@ namespace AcmeCarRental
         static void SimulateAddingPoints()
         {
             var dataService = new FakeLoyaltyDataService();
-            var service = new LoyaltyAccrualService(dataService);
+            //var tran2 = new TransactionManager2();
+
+            //requires creating dependcies
+            IExceptionHandler exceptionHandler = new ExceptionHandler();
+            ITransactionManager tran = new TransactionManager();
+            var facade = new TransactionFacade(exceptionHandler, tran);
+
+            //original
+            //var service = new LoyaltyAccrualService(dataService);
+
+            //refactored combined tran-manager without AOP
+            //var service = new without.LoyaltyAccrualServiceRefactored(dataService, tran2);
+
+            //refactored without AOP, using facade
+            var service = new without.LoyaltyAccrualServiceRefactored(dataService, facade);
 
             var rentalAgreement = new RentalAgreement
             {
@@ -43,7 +58,10 @@ namespace AcmeCarRental
                 EndDate = DateTime.Now
             };
 
-            service.Accrue(rentalAgreement);
+            //original accrue method
+            //service.Accrue(rentalAgreement);
+
+            service.AccrueRefWithoutAOP(rentalAgreement);
         }
 
         static void SimulateRemovingPoints()
